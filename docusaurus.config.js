@@ -8,12 +8,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
-  url: 'https://MrBLightning.github.io',
+  url: 'https://scribe-security.github.io',
   baseUrl: '/docosaurus-scribe/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'MrBLightning', // Usually your GitHub org/user name.
+  organizationName: 'scribe-security', // Usually your GitHub org/user name.
   projectName: 'docosaurus-scribe', // Usually your repo name.
   trailingSlash: false,
   presets: [
