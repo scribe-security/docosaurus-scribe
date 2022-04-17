@@ -39,7 +39,7 @@ Pick the company size and role that best describe you. Note that all fields are 
 The next page checkss your technical qualifications. Note that you need to mark all of the check boxes to gain early access to our tool.  
 Since our tool scans your git repo and node.js built image we aim to check if your project can benefit from the current tool iteration.  
 
-<img src='../img/start/register_form_2.JPG' alt='Registration form, page 2' width="400" />
+<img src='../static/img/start/register_form_2.JPG' alt='Registration form, page 2' width="400" />
 
 Once you have clicked on the 'apply for early access' button you'll be directed to a thank you note. Now Scribe's team needs to verify your data and approve you for early access. 
 
@@ -66,30 +66,30 @@ Note – you cannot run the tool on a Git repo you do not have administrator per
 ```   $HOME/.scribe/bin/gensbom bom dir:<path> -vv --scribe.url=https://api.production.scribesecurity.com --scribe.loginurl=https://scribesecurity-production.us.auth0.com --scribe.auth0.audience=api.production.scribesecurity.com --scribe.username=<unique_username> --scribe.password=<unique_password> --name=scribe -E -f --insecure ```  
 The SBOM generated will be automatically uploaded to Scribe's backend.
 Look for this success message to mark the end of the SBOM generation and its successful upload:
-![SBOM success](/img/start/sbom_success.JPG)
+![SBOM success](/static/img/start/sbom_success.JPG)
 
 * Run the following command that collects the metadata about your docker image. Replace `<your_docker_image>` with the name of the docker image:  
 ```   $HOME/.scribe/bin/gensbom bom <your_docker_image> -vv --scribe.url=https://api.production.scribesecurity.com --scribe.loginurl=https://scribesecurity-production.us.auth0.com --scribe.auth0.audience=api.production.scribesecurity.com --scribe.username=<unique_username> --scribe.password=<unique_password> --name=scribe -E -f --insecure ```  
 The SBOM generated will be automatically uploaded to Scribe's backend.
 
 * Once You have generated both SBOMs you can go ahead and press the 'done' button to head over to your report:   
-![Done, View Results](/img/start/done_view_results.png)  
+![Done, View Results](/static/img/start/done_view_results.png)  
 
 * This will take you to your analysis report screen. The screen looks like this:  
-![analysis report screen](/img/start/sample_data.png)  
+![analysis report screen](/static/img/start/sample_data.png)  
 
 The first area to note is on the top left, the **Source Code Validation**:  
-<img src='../img/start/source_code_validation.png' alt='Source Code Validation' width="300" />
+<img src='../static/img/start/source_code_validation.png' alt='Source Code Validation' width="300" />
 
 This area tells you how many files were validated (exact match to their original hashes) when compared to the source control repo. In this example 220 files were validated out of 23 repositories. There is 1 suspicious file that changed unexpectadly between the repository and the build.
 
 The second area to note is in the top middle of the page, the **Open-Source Dependency Validation**: 
-<img src='../img/start/oss_validation.png' alt='Open-Source Dependency Validation' width="300" />
+<img src='../static/img/start/oss_validation.png' alt='Open-Source Dependency Validation' width="300" />
 
 This area tells you how many open-source packages were validated (exact match to their original hashes) when compared to the Scribe’s record of the correct open-source package location. In this example 756 packages were identified and validated. 
 
 At the very top of the page on the right you can see the button that allows you to download a signed SBOM describing exactly the list of components, packages and files described in this report. The SBOM is cryptographically signed using Scribe’s certificate.
-<img src='../img/start/export_sbom.png' alt='export SBOM' width="400" />  
+<img src='../static/img/start/export_sbom.png' alt='export SBOM' width="400" />  
 
 At the bottom part of the page, you can see a full list of the files and packages identified in your image and the comparison result.  
 
