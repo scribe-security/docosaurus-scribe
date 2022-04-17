@@ -33,13 +33,13 @@ Go to: https://mui.production.scribesecurity.com/ and choose the 'sign up for ea
 This will lead you to a form where you can start the registeration for early access.  
 The first page of the form is a simple personal data page.
 
-<img src='../static/img/start/register_form_1.JPG' alt='Registration form, page 1' width="400" />
+<img src='../static/img/start/register_form_1.jpg' alt='Registration form, page 1' width="400" />
 
 Pick the company size and role that best describe you. Note that all fields are mandatory.  
 The next page checkss your technical qualifications. Note that you need to mark all of the check boxes to gain early access to our tool.  
 Since our tool scans your git repo and node.js built image we aim to check if your project can benefit from the current tool iteration.  
 
-<img src='../img/start/register_form_2.JPG' alt='Registration form, page 2' width="400" />
+<img src='../img/start/register_form_2.jpg' alt='Registration form, page 2' width="400" />
 
 Once you have clicked on the 'apply for early access' button you'll be directed to a thank you note. Now Scribe's team needs to verify your data and approve you for early access. 
 
