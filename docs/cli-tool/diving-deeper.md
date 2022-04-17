@@ -26,8 +26,8 @@ There are several global flags that can be used throughout the Scribe CLI tool. 
 
 <table>
   <tr>
-    <th width='18%'>Full Flag</th>
-    <th>Short</th>
+    <th width='18%'>Flag</th>
+    <th>Alt</th>
     <th>Format</th>
     <th>Description</th>
   </tr>

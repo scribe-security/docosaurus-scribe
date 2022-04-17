@@ -34,8 +34,8 @@ Here are the flags relevant to the ‘sign’ command.
 
 <table>
   <tr>
-    <th width='18%'>Full Flag</th>
-    <th>Short</th>
+    <th width='18%'>Flag</th>
+    <th>Alt</th>
     <th>Format</th>
     <th>Description</th>
   </tr>

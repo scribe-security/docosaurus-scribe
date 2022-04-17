@@ -18,22 +18,59 @@ After you’ve created an SBOM you can cryptographically sign it making it into 
 ## QuickStart
 
 Scribe’s CLI tool produces an SBOM in a JSON or XML format in the CycloneDX SBOM standard.  
-To create an SBOM the basic command is:
-`gensbom bom [TARGET]`
 
-**TARGET** is the docker image or file directory you wish to create an SBOM for.
+System prerequisite:
+The tool works on Mac and Linux systems only. If you want access to external docker images from public registries, docker daemon should be installed before you install the CLI tool.   
 
-The simplest way to get an SBOM is to use the command in this way:  
-`gensbom bom alpine:latest` – This command will create a default (CycloneDX json) SBOM from the docker image of alpine:latest.
+To create an SBOM the basic command is:  
+`gensbom bom <target> `
 
-Unless you specified a different path you can access the new SBOM in the default Scribe’s CLI tool’s cache, in path `/tmp/scribe/registry/alpine/latest`.
+`<target>` is the docker image: name:tag, file path, or registry URL Example:  
+`gensbom bom alpine:latest`
 
-The part of the path `/tmp/scribe` is by default always the same. You can change the cache default path using the flag -d. The rest of the path depends on the image you created an SBOM for, in this case `/alpine/latest`, and where it came from, in this case the `registry`.
+This creates a default SBOM in a CycloneDX JSON format, from the image of alpine:latest found in dockerhub. The SBOM is found by default under 
+`/tmp/scribe/registry/alpine/latest`.  
 
-Note that the SBOM itself has, by default, a name that represents the hash value of the image you analyzed. This way, if you try to create a SBOM for an image or directory you already have an SBOM for in the Scribe’s CLI tool cache you’ll get the notification 'Cache hit' with the exact path to the file or files that have the same hash name:  
-![Cache hit](/img/cli/cache_hit.png)
+By default the SBOM file name is the hash of the image. You can specify another output file path and name as follows:  
+`gensbom bom <target> [--output-file /path/file_name.json]`  
+
+You can also set an output directory as follows:  
+`gensbom bom <target> [--output-directory /file_path]`  
+
+Output SBOMs path segments are: target source, image name, image tag. 
+Example:  `/tmp/scribe/registry/alpine/latest`.  
+
+(The path for SBOMs of alpine:latest from registry)
 
 You now have an SBOM file you can look over and experiment with.
+
+## Examples
+
+Target (image) locations:  
+`gensbom bom yourrepo/yourimage:tag`  
+
+By default the image is retrieved by dockerd. If the docker daemon is running, the image is pulled directly from the registry (by default, dockerhub).
+To explicitly use the Docker daemon:   
+`gensbom bom docker:yourrepo/yourimage:tag`  
+
+Use a local traball created by "docker save":  
+`gensbom bom docker-archive:path/to/yourimage.tar`  
+
+Use a tarball from your local disk for OCI archives (for example, Skopeo):  
+`gensbom bom oci-archive:path/to/yourimage.tar`  
+
+Read the image directly from a path on your local disk (any directory):  
+`gensbom bom dir:path/to/yourproject`  
+
+Pull image directly from a registry:  
+`gensbom bom registry:yourrepo/yourimage:tag`  
+
+Read directly from a path on disk (any single file):  
+`gensbom bom file:path/to/yourproject/file`  
+ 
+Output SBOM locations:  
+`gensbom bom alpine:latest --output-file /your_sboms/sample-sbom.json`  
+`gensbom bom alpine:latest --output-directory /your_sboms`
 
 If you want to dive deeper into the functionality of Scribe’s CLI tool read on.
 
