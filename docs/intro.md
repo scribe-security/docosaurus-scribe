@@ -28,26 +28,26 @@ The tool works on Mac and Linux systems only. If you want access to external doc
 At the moment the only way to get the scribe tool’s analysis report is to run it through the scribe website.   
 Go to: https://mui.production.scribesecurity.com/ and choose the 'sign up for early access' button. 
 
-<img src='../img/start/sign_up_for_early_access.jpg' alt='sign up for early access' width="300" />
+<img src='../img/start/sign_up_for_early_access.JPG' alt='sign up for early access' width="300" />
 
 This will lead you to a form where you can start the registeration for early access.  
 The first page of the form is a simple personal data page.
 
-<img src='../img/start/register_form_1.jpg' alt='Registration form, page 1' width="400" />
+<img src='../img/start/register_form_1.JPG' alt='Registration form, page 1' width="400" />
 
 Pick the company size and role that best describe you. Note that all fields are mandatory.  
 The next page checkss your technical qualifications. Note that you need to mark all of the check boxes to gain early access to our tool.  
 Since our tool scans your git repo and node.js built image we aim to check if your project can benefit from the current tool iteration.  
 
-<img src='../img/start/register_form_2.jpg' alt='Registration form, page 2' width="400" />
+<img src='../img/start/register_form_2.JPG' alt='Registration form, page 2' width="400" />
 
 Once you have clicked on the 'apply for early access' button you'll be directed to a thank you note. Now Scribe's team needs to verify your data and approve you for early access. 
 
-<img src='../img/start/register_form_3.jpg' alt='Registration form, page 3' width="400" />
+<img src='../img/start/register_form_3.JPG' alt='Registration form, page 3' width="400" />
 
 Once you're approved you'll receive an email with a uniqe link to the early access page that looks like this:
 
-<img src='../img/start/set_up_1.jpg' alt='Set up page' width="400" />
+<img src='../img/start/set_up_1.JPG' alt='Set up page' width="400" />
 
 This page outlines a list of simple steps to take to be able to get an integrity report for your git repo and docker image. Note that the username and password used in the linked code is unique to you. 
 
@@ -66,7 +66,7 @@ Note – you cannot run the tool on a Git repo you do not have administrator per
 ```   $HOME/.scribe/bin/gensbom bom dir:<path> -vv --scribe.url=https://api.production.scribesecurity.com --scribe.loginurl=https://scribesecurity-production.us.auth0.com --scribe.auth0.audience=api.production.scribesecurity.com --scribe.username=<unique_username> --scribe.password=<unique_password> --name=scribe -E -f --insecure ```  
 The SBOM generated will be automatically uploaded to Scribe's backend.
 Look for this success message to mark the end of the SBOM generation and its successful upload:
-![SBOM success](/img/start/sbom_success.jpg)
+![SBOM success](/img/start/sbom_success.JPG)
 
 * Run the following command that collects the metadata about your docker image. Replace `<your_docker_image>` with the name of the docker image:  
 ```   $HOME/.scribe/bin/gensbom bom <your_docker_image> -vv --scribe.url=https://api.production.scribesecurity.com --scribe.loginurl=https://scribesecurity-production.us.auth0.com --scribe.auth0.audience=api.production.scribesecurity.com --scribe.username=<unique_username> --scribe.password=<unique_password> --name=scribe -E -f --insecure ```  
