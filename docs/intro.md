@@ -66,17 +66,20 @@ Note – you cannot run the tool on a Git repo you do not have administrator per
 ```   $HOME/.scribe/bin/gensbom bom dir:<path> -vv --scribe.url=https://api.production.scribesecurity.com --scribe.loginurl=https://scribesecurity-production.us.auth0.com --scribe.auth0.audience=api.production.scribesecurity.com --scribe.username=<unique_username> --scribe.password=<unique_password> --name=scribe -E -f --insecure ```  
 The SBOM generated will be automatically uploaded to Scribe's backend.
 Look for this success message to mark the end of the SBOM generation and its successful upload:
-![SBOM success](/static/img/start/sbom_success.JPG)
+<!-- ![SBOM success](/static/img/start/sbom_success.JPG) -->
+<img src='../static/img/start/sbom_success.JPG' alt='SBOM success' />
 
 * Run the following command that collects the metadata about your docker image. Replace `<your_docker_image>` with the name of the docker image:  
 ```   $HOME/.scribe/bin/gensbom bom <your_docker_image> -vv --scribe.url=https://api.production.scribesecurity.com --scribe.loginurl=https://scribesecurity-production.us.auth0.com --scribe.auth0.audience=api.production.scribesecurity.com --scribe.username=<unique_username> --scribe.password=<unique_password> --name=scribe -E -f --insecure ```  
 The SBOM generated will be automatically uploaded to Scribe's backend.
 
 * Once You have generated both SBOMs you can go ahead and press the 'done' button to head over to your report:   
-![Done, View Results](/static/img/start/done_view_results.png)  
+<!-- ![Done, View Results](/static/img/start/done_view_results.png)   -->
+<img src='../static/img/start/done_view_results.png' alt='Done, View Results' />
 
 * This will take you to your analysis report screen. The screen looks like this:  
-![analysis report screen](/static/img/start/sample_data.png)  
+<!-- ![analysis report screen](/static/img/start/sample_data.png)   -->
+<img src='../static/img/start/sample_data.png' alt='analysis report screen' />
 
 The first area to note is on the top left, the **Source Code Validation**:  
 <img src='../static/img/start/source_code_validation.png' alt='Source Code Validation' width="300" />
