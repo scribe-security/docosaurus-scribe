@@ -15,16 +15,16 @@ After you have downloaded the binary you can scan the SBOM using this command:
 ```grype sbom:./image-sbom.json```   
 
 Here’s an example for the Grype scan of Alpine – no vulnerabilities found.
-![Grype alpine](/img/grype/grype_alpine.png)  
+![Grype alpine](/static/img/grype/grype_alpine.png)  
 
 Here’s an example for the Grype scan of Couchbase – some vulnerabilities found.
-![Grype couchbase](/img/grype/grype_couchbase.png)  
+![Grype couchbase](/static/img/grype/grype_couchbase.png)  
 
 To get more exact information, it’s recommended to use the flag -o (format) with the option ‘json’ like this:   
 ```grype sbom:./image-sbom.json -o json```
 
 The result would be listed in stdout and look like this:  
-![Couchbase CVEs](/img/grype/couchbase_cve.png)
+![Couchbase CVEs](/static/img/grype/couchbase_cve.png)
 etc'...
 
 Since the result of Grype is fully directed to stdout you can grab the result into a file using this cli format:   

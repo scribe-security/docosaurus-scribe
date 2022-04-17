@@ -9,15 +9,15 @@ You can use the ‘sign’ command to cryptographically sign a statement created
 If you do not provide a specific file, the command will search for that image’s SBOM or statement in the bomber cahce (default ‘tmp/scribe). 
 
 Note that in order to sign a statement or an SBOM, by default bomber expects you to be online and it would use the library sigstore to get your credentials – either GitHub, Google or, Microsoft credentials.  You would be requested to log in to sigstore in order to successfully sign the attestation.
-![Sigstore link](/img/cli/sigstore_link.png)
+![Sigstore link](/static/img/cli/sigstore_link.png)
 
-<img src='../../img/cli/sigstore_login.png' alt='Sigstore login' width="600" /><br/>   
+<img src='../static/img/cli/sigstore_login.png' alt='Sigstore login' width="600" /><br/>   
 
 Once you have logged in using your preferred method, you’d receive a code representing your credentials that you need to copy to the CLI. 
 
-<img src='../../img/cli/sigstore_login_code.png' alt='Sigstore login code' width="350" />   
+<img src='../static/img/cli/sigstore_login_code.png' alt='Sigstore login code' width="350" />   
 
-![Signing success](/img/cli/sign_success.png)  
+![Signing success](/static/img/cli/sign_success.png)  
 
 The verification code created is a one-time use code so there is no need to save it.
 

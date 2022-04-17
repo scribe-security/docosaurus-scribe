@@ -84,15 +84,15 @@ The command to create a CycloneDX JSON attestation is very similar:
 ```gensbom bom alpine:latest -o attest-cyclonedx-json```
 
 This command both creates the SBOM and turns it into a signed attestation. Signing an existing statement is done using the ‘sign’ command and covered in that chapter. Note that in order to sign an attestation, by default Scribe's tool expects you to be online and it would use the library <a href='https://github.com/sigstore'>sigstore</a> to get your credentials – either GitHub, Google or, Microsoft credentials. You would be requested to log in to Sigstore in order to successfully sign the attestation.
-![Sigstore link](/img/cli/sigstore_link.png)  
+![Sigstore link](/static/img/cli/sigstore_link.png)  
 
-<img src='../../img/cli/sigstore_login.png' alt='Sigstore login' width="600" /><br/>   
+<img src='../static/img/cli/sigstore_login.png' alt='Sigstore login' width="600" /><br/>   
 
 Once you have logged in using your preferred method, you’d receive a code representing your credentials that you need to copy to the CLI. 
 
-<img src='../../img/cli/sigstore_login_code.png' alt='Sigstore login code' width="350" />   
+<img src='../static/img/cli/sigstore_login_code.png' alt='Sigstore login code' width="350" />   
 
-![Signing success](/img/cli/sign_success.png)  
+![Signing success](/static/img/cli/sign_success.png)  
 
 The verification code created is a one-time use code so there is no need to save it.
 
