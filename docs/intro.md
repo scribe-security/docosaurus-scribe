@@ -75,7 +75,7 @@ The SBOM generated will be automatically uploaded to Scribe's backend.
 
 * Once You have generated both SBOMs you can go ahead and press the 'done' button to head over to your report:   
 <!-- ![Done, View Results](/static/img/start/done_view_results.png)   -->
-<img src='../static/img/start/done_view_results.png' alt='Done, View Results' />
+<img src='../img/start/done_view_results.png' alt='Done, View Results' />
 
 * This will take you to your analysis report screen. The screen looks like this:  
 <!-- ![analysis report screen](/static/img/start/sample_data.png)   -->
