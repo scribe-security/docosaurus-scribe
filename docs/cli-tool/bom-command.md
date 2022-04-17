@@ -92,7 +92,7 @@ Once you have logged in using your preferred method, you’d receive a code repr
 
 <img src='../static/img/cli/sigstore_login_code.png' alt='Sigstore login code' width="350" />   
 
-![Signing success](/static/img/cli/sign_success.png)  
+![Signing success](/static/img/cli/sign_success.PNG)  
 
 The verification code created is a one-time use code so there is no need to save it.
 
