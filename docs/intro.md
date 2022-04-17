@@ -28,7 +28,7 @@ The tool works on Mac and Linux systems only. If you want access to external doc
 At the moment the only way to get the scribe tool’s analysis report is to run it through the scribe website.   
 Go to: https://mui.production.scribesecurity.com/ and choose the 'sign up for early access' button. 
 
-<img src='../../img/start/sign_up_for_early_access.jpg' alt='sign up for early access' width="300" />
+<img src='../static/img/start/sign_up_for_early_access.jpg' alt='sign up for early access' width="300" />
 
 This will lead you to a form where you can start the registeration for early access.  
 The first page of the form is a simple personal data page.
