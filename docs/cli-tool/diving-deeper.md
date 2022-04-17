@@ -15,7 +15,7 @@ The Scribe CLI tool can do several things:
 To clarify, an attestation is a <a href='https://github.com/slsa-framework/slsa/blob/main/controls/attestations.md'>specific format defined by the SLSA framework</a>.  
 It includes metadata (a statement) about a software artifact and is cryptographically signed to maintain its integrity.  
 A Scribe statement is created in the same format as an attestation, it’s just missing the signature.  
-<img src='../static/img/cli/available_commands.png' alt='Available commands' width="400" />
+<img src='/static/img/cli/available_commands.png' alt='Available commands' width="400" />
 
 The SBOM, statement, and attestation are all created using the ‘bom’ command.
 The ‘find’ command is used to do a search for a specific SBOM, statement, or attestation that was created by Scribe's CLI tool.
