@@ -3,105 +3,63 @@ sidebar_position: 1
 ---
 # Getting started
 
-## Overview of Scribe
+## Scribe Early Access
 
-Scribe is a solution for DevSecOps teams and Security teams who want to govern security of software in the development process. Scribe enables you to collect and share evidence about the security level of these processes. You can share such evidence with stakeholders who are responsible for the internal deployment or with external consumers of your software. For example, with Scribe you can analyze and share the Software Bill of Materials (<a href='https://scribesecurity.com/sbom/'>SBOM</a>) of your product with your customers.
-Scribe works either as an Internet service or as a standalone tool.  As a service, Scribe collects evidence and manages it in an immutable store. Scribe analyzes the evidence to rule out tampering. It can also be used to set a policy to govern the admission or delivery of software artifacts. Finally, Scribe facilitates evidence sharing workflows with software consumers.
+With Scribe’s Early Access you can validate the integrity of Node.JS images you build. Scribe maps all the components and files that made their way into your Node.js’s project final docker image and validates that each file’s hash value hasn’t changed if it wasn’t supposed to.
 
-## About SBOM
+## Prerequisites 
 
-An SBOM is a list of a software artifact’s components. SBOMs are a tool for the receiver or operator of this software to manage risks such as exposure to new and existing vulnerabilities in the open-source dependencies in that software. The SBOM includes information such as the dependencies, versions, package URLs, and file locations.
+You will need a Mac or Linux workstation running dockerd with access to the source repo and the image’s registry. Copy and run the following commands in a shell on your workstation.
 
-## Additional evidence collection
+<hr/>
 
-In the upcoming versions of Scribe, you will be able to collect additional evidence from different steps in the software development life cycle. This serves for proving that the development process and the product are secure. For example, evidence of code committer identity, code review, static and dynamic code testing, etc. To prevent tampering, evidence is cryptographically signed with various signing schemes. 
+## Getting Started
 
-## QuickStart
+To get started navigate in your browser to <a href='https://app.scribesecurity.com/scribe-install'>this address</a>. 
 
-Find out what all the components that made their way into your Node.js’s project final docker image are and make sure they are all identical when compared to their origin.
-Scribe tracks all files from their origin source code repo up to the final image and validates that each file’s hash value hasn’t changed if it wasn’t supposed to. 
+## Get gensbom CLI tool
 
-System prerequisite:
-The tool works on Mac and Linux systems only. If you want access to external docker images from public registries, docker daemon should be installed before you install the CLI tool.  
-## Generating a report through the Scribe site
+```curl https://www.scribesecurity.com/getscribe | sh```
+## Clone the source repo of your docker image to your local machine
 
-At the moment the only way to get the scribe tool’s analysis report is to run it through the scribe website.   
-Go to: https://mui.production.scribesecurity.com/ and choose the 'sign up for early access' button. 
+```git clone <your_repo>```
 
-<img src='../img/start/sign_up_for_early_access.JPG' alt='sign up for early access' width="300" />
+Replace ```<your_repo>``` with the source repo path.
 
-This will lead you to a form where you can start the registeration for early access.  
-The first page of the form is a simple personal data page.
+## Collect metadata about your source code
 
-<img src='../img/start/register_form_1.jpg' alt='Registration form, page 1' width="400" />
+```$HOME/.scribe/bin/gensbom bom dir:<path> --scribe.url=https://api.dev.scribesecurity.com --scribe.username=<username> --scribe.password=<password> --name=scribe -E -f -vv --insecure```
 
-Pick the company size and role that best describe you. Note that all fields are mandatory.  
-The next page checkss your technical qualifications. Note that you need to mark all of the check boxes to gain early access to our tool.  
-Since our tool scans your git repo and node.js built image we aim to check if your project can benefit from the current tool iteration.  
+Replace ```<path>``` with the path to the repo you cloned. ```<username>``` and ```<password>``` are re-generated for you every time you access the page.
 
-<img src='../img/start/register_form_2.jpg' alt='Registration form, page 2' width="400" />
+## Collect metadata about your docker image
 
-Once you have clicked on the 'apply for early access' button you'll be directed to a thank you note. Now Scribe's team needs to verify your data and approve you for early access. 
+```$HOME/.scribe/bin/gensbom bom <your_docker_repository:tag> --scribe.url=https://api.dev.scribesecurity.com --scribe.username=<username> --scribe.password=<password> --name=scribe -E -f -vv --insecure```
 
-<img src='../img/start/register_form_3.JPG' alt='Registration form, page 3' width="400" />
+Replace ```<your_docker_repository:tag>``` with the path to the your docker image. ```<username>``` and ```<password>``` are re-generated for you every time you access the page.
 
-Once you're approved you'll receive an email with a uniqe link to the early access page that looks like this:
+## Finish
 
-<img src='../img/start/set_up_1.JPG' alt='Set up page' width="400" />
+After these commands are done, click the <b>Done</b> button at the bottom of the web page.
+If you clicked Done but didn’t run the commands in this guide, go back and start over.
 
-This page outlines a list of simple steps to take to be able to get an integrity report for your git repo and docker image. Note that the username and password used in the linked code is unique to you. 
+## How to read the integrity analysis
 
-* Open a bash session
+### Source Code Validation
 
-* To download the Scribe tool, gensbom, type in the following command:  
-```   curl https://www.scribesecurity.com/getscribe | sh ```
+Scribe reports how many JS files in the docker image were validated.
+In case that a file’s hash value changed between its version in the source repo and and the destination image, Scribe determines whether this is a benign modification and flags only suspicious files. 
+In the lower half of the page you can view the details of the individual files that were validated.
 
-* Clone the source repo of your docker image to your local machine and enter the following command (replacing `<your_repo>` with your source repo path):   
-```   git clone <your_repo> ```
+### Open Source Dependency Validation
 
-**your_repo** is the path to your git repo, for example: ```github.com/MrBLightning/IFeelU```  
-Note – you cannot run the tool on a Git repo you do not have administrator permissions for.
+Scribe reports how many open-source packages were validated and the total number of open-source files validated within these packages.
+Scribe does this, by first analyzing the composition of the docker image. Then, for each package Scribe compares each of its files hashes with Scribe’s package intelligence DB. 
+In the lower half of the page you can view the details of the individual packages and files that  were validated. 
+In case that a file’s hash value changed between its version in the source repo and and the destination image, Scribe determines whether this is a benign modification and flags only suspicious files
 
-* Run the following command that collects the metadata about your source code. Replace `<path>` with the path to the repo you cloned:  
-```   $HOME/.scribe/bin/gensbom bom dir:<path> -vv --scribe.url=https://api.production.scribesecurity.com --scribe.loginurl=https://scribesecurity-production.us.auth0.com --scribe.auth0.audience=api.production.scribesecurity.com --scribe.username=<unique_username> --scribe.password=<unique_password> --name=scribe -E -f --insecure ```  
-The SBOM generated will be automatically uploaded to Scribe's backend.
-Look for this success message to mark the end of the SBOM generation and its successful upload:
-<!-- ![SBOM success](/static/img/start/sbom_success.JPG) -->
-<img src='../img/start/sbom_success.JPG' alt='SBOM success' />
+### Export SBOM 
 
-* Run the following command that collects the metadata about your docker image. Replace `<your_docker_image>` with the name of the docker image:  
-```   $HOME/.scribe/bin/gensbom bom <your_docker_image> -vv --scribe.url=https://api.production.scribesecurity.com --scribe.loginurl=https://scribesecurity-production.us.auth0.com --scribe.auth0.audience=api.production.scribesecurity.com --scribe.username=<unique_username> --scribe.password=<unique_password> --name=scribe -E -f --insecure ```  
-The SBOM generated will be automatically uploaded to Scribe's backend.
-
-* Once You have generated both SBOMs you can go ahead and press the 'done' button to head over to your report:   
-<!-- ![Done, View Results](/static/img/start/done_view_results.png)   -->
-<img src='../img/start/done_view_results.png' alt='Done, View Results' />
-
-* This will take you to your analysis report screen. The screen looks like this:  
-<!-- ![analysis report screen](/static/img/start/sample_data.png)   -->
-<img src='../img/start/sample_data.png' alt='analysis report screen' />
-
-The first area to note is on the top left, the **Source Code Validation**:  
-<img src='../img/start/source_code_validation.png' alt='Source Code Validation' width="300" />
-
-This area tells you how many files were validated (exact match to their original hashes) when compared to the source control repo. In this example 220 files were validated out of 23 repositories. There is 1 suspicious file that changed unexpectadly between the repository and the build.
-
-The second area to note is in the top middle of the page, the **Open-Source Dependency Validation**: 
-<img src='../img/start/oss_validation.png' alt='Open-Source Dependency Validation' width="300" />
-
-This area tells you how many open-source packages were validated (exact match to their original hashes) when compared to the Scribe’s record of the correct open-source package location. In this example 756 packages were identified and validated. 
-
-At the very top of the page on the right you can see the button that allows you to download a signed SBOM describing exactly the list of components, packages and files described in this report. The SBOM is cryptographically signed using Scribe’s certificate.
-<img src='../img/start/export_sbom.png' alt='export SBOM' width="400" />  
-
-At the bottom part of the page, you can see a full list of the files and packages identified in your image and the comparison result.  
-
-The Filter button on the left allows you to filter the results by various options, for example, to see all files that were modified between the source repo and the final image.   
-
-The Search button on the right allows you to search for particular packages or files you are interested in finding, for example Log4J. Note that for each file you can see its exact path in your image.   
-
-And that’s it – you have now seen tha analysis report and can download an SBOM you can look over and experiment with.  
-
-If you want to dive deeper into the functionality of Scribe’s CLI tool you’re welcome to read on.
+You can export the SBOM detailing the open-source dependencies of the docker image you analyzed by clicking <b>Export SBOM</b> in the top right of the report. The SBOM is in CycloneDX format.
 
 

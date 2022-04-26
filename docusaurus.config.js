@@ -51,15 +51,27 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'cli-tool/overview',
+            docId: 'intro',
             position: 'left',
-            label: 'CLI Tool',
+            label: 'Getting Started',
           },
           {
             type: 'doc',
-            docId: 'check_cves',
+            docId: 'overview',
             position: 'left',
-            label: 'Check CVEs',
+            label: 'Overview',
+          },
+          {
+            type: 'doc',
+            docId: 'gensbomcli',
+            position: 'left',
+            label: 'Generate an SBOM from CLI',
+          },
+          {
+            type: 'doc',
+            docId: 'cves',
+            position: 'left',
+            label: 'Detecting CVEs',
           }
           // {to: '/blog', label: 'Blog', position: 'left'},
           // {
