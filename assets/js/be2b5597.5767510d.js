@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkscribe=self.webpackChunkscribe||[]).push([[870],{261:function(s){s.exports=JSON.parse('{"allTagsPath":"/docosaurus-scribe/blog/tags","slug":"/docosaurus-scribe/blog/tags/facebook","name":"facebook","count":1,"permalink":"/docosaurus-scribe/blog/tags/facebook"}')}}]);
