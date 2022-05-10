@@ -9,10 +9,10 @@ Scribe gensbom CLI tool can generate an SBOM for docker images, OCI images, or l
 ## Prerequisites
 
 The tool works on Mac and Linux systems only. If you want access to external docker images from public registries, docker daemon should be installed before you install the CLI tool.   
-You can download the latest gensbom CLI tool here:
-Linux: <a href='http://resources.production.scribesecurity.com/linux/amd64/gensbom'>http://resources.production.scribesecurity.com/linux/amd64/gensbom</a>
-Mac Intel: <a href='http://resources.production.scribesecurity.com/darwin/amd64/gensbom'>http://resources.production.scribesecurity.com/darwin/amd64/gensbom</a>
-Mac M1: <a href='http://resources.production.scribesecurity.com/darwin/amd64/gensbom'>http://resources.production.scribesecurity.com/darwin/amd64/gensbom</a>
+You can download the latest gensbom CLI tool here:  
+Linux: <a href='http://resources.production.scribesecurity.com/linux/amd64/gensbom'>http://resources.production.scribesecurity.com/linux/amd64/gensbom</a>  
+Mac Intel: <a href='http://resources.production.scribesecurity.com/darwin/amd64/gensbom'>http://resources.production.scribesecurity.com/darwin/amd64/gensbom</a>  
+Mac M1: <a href='http://resources.production.scribesecurity.com/darwin/amd64/gensbom'>http://resources.production.scribesecurity.com/darwin/amd64/gensbom</a>  
 
 before running the tool make sure you have the right privileges for the file by typing:
 ```chmod u+x gensbom```
