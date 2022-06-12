@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 # Getting started
 
@@ -15,7 +15,7 @@ You will need a Mac or Linux workstation running dockerd with access to the sour
 
 ## Getting Started
 
-To get started navigate in your browser to <a href='https://app.scribesecurity.com/scribe-install'>this address</a>. 
+To get started navigate in your browser to <a href='https://mui.production.scribesecurity.com/install-scribe'>this address</a>. 
 
 ## Get gensbom CLI tool
 
