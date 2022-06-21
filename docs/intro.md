@@ -28,13 +28,13 @@ Replace ```<your_repo>``` with the source repo path.
 
 ## Collect metadata about your source code
 
-```$HOME/.scribe/bin/gensbom bom dir:<path> --scribe.url=https://api.dev.scribesecurity.com --scribe.username=<username> --scribe.password=<password> --name=scribe -E -f -vv --insecure```
+```$HOME/.scribe/bin/gensbom bom dir:<path> --scribe.url=https://api.dev.scribesecurity.com --scribe.username=<username> --scribe.password=<password> --name=scribe -E -f -vv```
 
 Replace ```<path>``` with the path to the repo you cloned. ```<username>``` and ```<password>``` are re-generated for you every time you access the page.
 
 ## Collect metadata about your docker image
 
-```$HOME/.scribe/bin/gensbom bom <your_docker_repository:tag> --scribe.url=https://api.dev.scribesecurity.com --scribe.username=<username> --scribe.password=<password> --name=scribe -E -f -vv --insecure```
+```$HOME/.scribe/bin/gensbom bom <your_docker_repository:tag> --scribe.url=https://api.dev.scribesecurity.com --scribe.username=<username> --scribe.password=<password> --name=scribe -E -f -vv```
 
 Replace ```<your_docker_repository:tag>``` with the path to the your docker image. ```<username>``` and ```<password>``` are re-generated for you every time you access the page.
 
