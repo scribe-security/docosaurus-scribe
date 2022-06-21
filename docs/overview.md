@@ -1,8 +1,6 @@
 ---
 sidebar_position: 1
 ---
-<img src='https://repository-images.githubusercontent.com/503625714/7e2cd452-c7f1-4718-8b5b-e2e89f43eb37' alt='Gitgat' width="400" />
-
 # Overview
 
 Scribe is a solution for organizations who are concerned about threats from their software supply chain. 
