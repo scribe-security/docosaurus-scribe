@@ -29,7 +29,7 @@ function HomepageHeader() {
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Redirect to="/docosaurus-scribe/docs/intro"/>
+    <Redirect to="/docosaurus-scribe/docs/overview"/>
     // <Layout
     //   title={`Hello from ${siteConfig.title}`}
     //   description="Description will go into a meta tag in <head />">
