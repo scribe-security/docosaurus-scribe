@@ -5,7 +5,7 @@ sidebar_position: 5
 # A Sample Project
 
 You can try out Scribe with an open-source Node.js project at:  
-https://github.com/Zineeddine998/Backend_challenge
+https://github.com/moyataka/amberik-core
 
 Copy and run the following commands in a bash shell on your workstation.
  
