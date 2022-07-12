@@ -1,17 +1,23 @@
----
-sidebar_position: 2
----
+# Jenkins over Kubernetes
+Scribe offers images for evidence collecting and integrity verification using Jenkins over K8s. \
+Images are are wrappers to provided CLI tools.
+* Gensbom - gitHub Action for SBOM Generation (Scribe) 
+* Valint - validate supply chain integrity tool
 
-# Jenkins
+[See Jenkins documentation](https://plugins.jenkins.io/kubernetes/)
 
-Integrate as a step in Jenkins pipelines.  
-Important to note that this is for Jenkins over Kubernetes only.
+# Integration
+## Scribe service integration
+Scribe provides a set of services to store,verify and manage the supply chain integrity. \
+Following are some integration examples.
+Scribe integrity flow - upload evidence using `gensbom` and download the integrity report using `valint`. \
+You may collect evidence anywhere in your workflows. 
 
 <details>
   <summary>  Scribe integrity report - full pipeline </summary>
 
-Full workflow example, uploading evidence using gensbom and downloading the report using valint.
-In this example the final step is to attach the report and evidence to your pipeline run.
+Full workflow example of a workflow, upload evidence using gensbom and download report using valint.
+Finally attaching reports and evidence to your pipeline run.
 
 ```YAML
 pipeline {
@@ -74,8 +80,8 @@ pipeline {
   }
 }
 ```
-This example uses Jenkins over k8s plugin,  
-Pod template needs these definitions to work
+Example uses Jenkins over k8s plugin, 
+Pod template defined
 ```YAML
 metadata:
   labels:
@@ -104,3 +110,8 @@ spec:
 ```
 </details>
 
+
+# Using JSL
+Scribe provides JSL to ease your integration.
+
+* [See documentation](./JSL/)
