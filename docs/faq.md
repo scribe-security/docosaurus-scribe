@@ -50,5 +50,5 @@ Following is a list of Q & A. If you can't find an answer please ping us on the 
 <br/>   
 
 **Q**: Can I use Scribe just to produce an SBOM (breakdown of my open-source dependencies) without validating integrity?  
-**A**: You can run *gensbom* on a container image to produce an SBOM. You can either download the SBOM from the Scribe wen application or you can produce it on your machine as explained here.
+**A**: You can run *gensbom* on a container image to produce an SBOM. You can either download the SBOM from the Scribe web application or you can produce it on your machine as explained here.
 

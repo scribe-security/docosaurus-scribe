@@ -7,13 +7,14 @@ sidebar_position: 2
 Integrate as a step in Jenkins pipelines.  
 Important to note that this is for Jenkins over Kubernetes only.
 
-<details>
-  <summary>  Scribe integrity report - full pipeline </summary>
+## Scribe integrity report - full pipeline
 
 Full workflow example, uploading evidence using gensbom and downloading the report using valint.
 In this example the final step is to attach the report and evidence to your pipeline run.
 
-```YAML
+This example pipeline YAML file does a checkout on a docker image, creates an *SBOM* for it from the loacl repository, creates another *SBOM* from the docker image and, finally, downloads the integrity report from the Scribe backend. 
+
+```bash
 pipeline {
   agent {
     kubernetes {
@@ -24,15 +25,19 @@ pipeline {
     stage('checkout-bom') {
       steps {        
         container('git') {
+          # this is an example of the repository this pipeline is running on. replace with your own repository
           sh 'git clone -b v1.0.0-alpha.4 --single-branch https://github.com/mongo-express/mongo-express.git mongo-express-scm'
         }
         
-        container('bomber') {
+        container('gensbom') {
+          # these credentials can be copied from your CLI page: https://mui.production.scribesecurity.com/install-scribe
           withCredentials([usernamePassword(credentialsId: 'scribe-staging-auth-id', usernameVariable: 'SCRIBE_CLIENT_ID', passwordVariable: 'SCRIBE_CLIENT_SECRET')]) {
+            # this stage creats the first SBOM
             sh '''
-            bomber bom dir:mongo-express-scm \
+            # this SBOM is created on the local directory, it's running on the source code of the image
+            gensbom bom dir:mongo-express-scm \
             --context-type jenkins \
-            --output-directory ./scribe/bomber \
+            --output-directory ./scribe/gensbom \
              -E -U $SCRIBE_CLIENT_ID -P $SCRIBE_CLIENT_SECRET \
              --scribe.loginurl=https://scribesecurity-staging.us.auth0.com --scribe.auth0.audience=api.staging.scribesecurity.com --scribe.url https://api.staging.scribesecurity.com \
             -vv'''
@@ -43,12 +48,15 @@ pipeline {
 
     stage('image-bom') {
       steps {
-        container('bomber') {
-           withCredentials([usernamePassword(credentialsId: 'scribe-staging-auth-id', usernameVariable: 'SCRIBE_CLIENT_ID', passwordVariable: 'SCRIBE_CLIENT_SECRET')]) {  
+        container('gensbom') {
+           # these credentials can be copied from your CLI page: https://mui.production.scribesecurity.com/install-scribe
+           withCredentials([usernamePassword(credentialsId: 'scribe-staging-auth-id', usernameVariable: 'SCRIBE_CLIENT_ID', passwordVariable: 'SCRIBE_CLIENT_SECRET')]) { 
+            # this stage creats the second SBOM 
             sh '''
-            bomber bom mongo-express:1.0.0-alpha.4 \
+            # this SBOM is created on the docker image, it's running on the uploaded image of this repository
+            gensbom bom mongo-express:1.0.0-alpha.4 \
             --context-type jenkins \
-            --output-directory ./scribe/bomber \
+            --output-directory ./scribe/gensbom \
             -E -U $SCRIBE_CLIENT_ID -P $SCRIBE_CLIENT_SECRET \
             --scribe.loginurl=https://scribesecurity-staging.us.auth0.com --scribe.auth0.audience=api.staging.scribesecurity.com --scribe.url https://api.staging.scribesecurity.com \
             -vv'''
@@ -60,9 +68,12 @@ pipeline {
     stage('download-report') {
       steps {
         container('valint') {
-           withCredentials([usernamePassword(credentialsId: 'scribe-staging-auth-id', usernameVariable: 'SCRIBE_CLIENT_ID', passwordVariable: 'SCRIBE_CLIENT_SECRET')]) {  
+           # these credentials can be copied from your CLI page: https://mui.production.scribesecurity.com/install-scribe
+           withCredentials([usernamePassword(credentialsId: 'scribe-staging-auth-id', usernameVariable: 'SCRIBE_CLIENT_ID', passwordVariable: 'SCRIBE_CLIENT_SECRET')]) {
+            # this stage downloads the integrity report from Scribe's backend   
             sh '''
             valint report \
+            # the default location for the report to be downloaded here is 'scribe/valint'
             -U $SCRIBE_CLIENT_ID -P $SCRIBE_CLIENT_SECRET --output-directory scribe/valint \
             --scribe.loginurl=https://scribesecurity-staging.us.auth0.com --scribe.auth.audience=api.staging.scribesecurity.com --scribe.url https://api.staging.scribesecurity.com \
             -vv'''
@@ -74,9 +85,11 @@ pipeline {
   }
 }
 ```
+
 This example uses Jenkins over k8s plugin,  
 Pod template needs these definitions to work
-```YAML
+
+```bash
 metadata:
   labels:
     some-label: jsl-scribe-test
@@ -87,11 +100,13 @@ spec:
     - name: CONTAINER_ENV_VAR
       value: jnlp
   - name: bomber
+    # taking the image from scribesecuriy means you don't need to have a local version
     image: scribesecuriy.jfrog.io/scribe-docker-public-local/bomber:latest 
     command:
     - cat
     tty: true
   - name: valint
+    # taking the image from scribesecuriy means you don't need to have a local version
     image: scribesecuriy.jfrog.io/scribe-docker-public-local/valint:latest
     command:
     - cat
@@ -102,5 +117,4 @@ spec:
       - cat
     tty: true
 ```
-</details>
 

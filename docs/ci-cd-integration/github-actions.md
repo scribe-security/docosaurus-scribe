@@ -16,9 +16,9 @@ Use default configuration path `.gensbom.yaml` to make sure you have set all the
 At minimum, you need to set the scribe `clientid` and `clientsecret`. 
 
 ```yaml
-  scribe-clientid:
+  scribe-clientid: <scribe-client-id>
     description: 'Scribe client id' 
-  scribe-clientsecret:
+  scribe-clientsecret: <scribe-access-token>
     description: 'Scribe access token' 
 ```
 
@@ -30,6 +30,8 @@ Here's usage example for generating an SBOM in GitHub workflow:
     target: '<target_name:tag>'
     verbose: 2
 ```
+In order to get a valid integrity report you should create 2 *SBOMs*, 1 for your repository source code, and 1 for your final image.
+The created *SBOMs* are automatically uploaded to Scribe's backend for integrity analysis.
 
 Here's usage example for calling Scribe's report in GitHub workflow:
 ```bash
