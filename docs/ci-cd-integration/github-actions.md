@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # GitHub Actions
 
-Integrate as a step in GitHub Actions. Scribe includes 2 elements in this action:  
+Scribe includes 2 elements in this action:  
 *gensbom* - the tool creating the *SBOM* and
 *valint* - the tool getting the report.
 
@@ -13,7 +13,9 @@ Both tools have other capabilites and CLI option but the simplest integration is
 to get Scribe's integrity report of the result.
 
 Use default configuration path `.gensbom.yaml` to make sure you have set all the input parameters you need.  
-At minimum, you need to set the scribe `clientid` and `clientsecret`. 
+At minimum, you need to set the scribe `clientid` and `clientsecret`.  
+
+These credentials can be copied from your <a href='https://mui.production.scribesecurity.com/install-scribe'>CLI page</a>.
 
 ```yaml
   scribe-clientid: <scribe-client-id>

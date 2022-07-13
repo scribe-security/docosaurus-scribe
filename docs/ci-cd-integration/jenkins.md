@@ -4,7 +4,6 @@ sidebar_position: 2
 
 # Jenkins
 
-Integrate as a step in Jenkins pipelines.  
 Important to note that this is for Jenkins over Kubernetes only.
 
 ## Scribe integrity report - full pipeline
