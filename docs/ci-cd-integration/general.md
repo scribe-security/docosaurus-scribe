@@ -26,21 +26,13 @@ Generate an *SBOM* for your source code. The credentials can be copied from your
 
 
 ```bash
-gensbom bom dir:<path> --scribe.clientid=****** -P --scribe.clientsecret=****** --name=scribe \
- --scribe.loginurl=https://scribesecurity-staging.us.auth0.com \ 
- --scribe.auth.audience=api.staging.scribesecurity.com \
- --scribe.url https://api.staging.scribesecurity.com \ 
- -E -f -v
+gensbom bom dir:<path> --scribe.clientid=****** -P --scribe.clientsecret=****** --name=scribe -E -f -v
 ```
 
 Generate an *SBOM* for your final image.
 
 ```bash
-gensbom bom <your_docker_repository:tag> --scribe.clientid=****** -P --scribe.clientsecret=****** --name=scribe \
- --scribe.loginurl=https://scribesecurity-staging.us.auth0.com \ 
- --scribe.auth.audience=api.staging.scribesecurity.com \
- --scribe.url https://api.staging.scribesecurity.com \ 
- -E -f -v
+gensbom bom <your_docker_repository:tag> --scribe.clientid=****** -P --scribe.clientsecret=****** --name=scribe -E -f -v
 ```
 
 ## Get the integrity report 
@@ -49,9 +41,5 @@ In this example the report will be downloaded into 'scribe/valint'. The credenti
 
 ```
 valint report -U \
- --scribe.clientid=****** -P --scribe.clientsecret=****** --output-directory scribe/valint \
- --scribe.loginurl=https://scribesecurity-staging.us.auth0.com \ 
- --scribe.auth.audience=api.staging.scribesecurity.com \
- --scribe.url https://api.staging.scribesecurity.com \ 
- -vv
+ --scribe.clientid=****** -P --scribe.clientsecret=****** --output-directory scribe/valint -vv
 ```
