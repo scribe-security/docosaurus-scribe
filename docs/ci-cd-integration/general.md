@@ -26,13 +26,21 @@ Generate an *SBOM* for your source code. The credentials can be copied from your
 
 
 ```bash
-$HOME/.scribe/bin/gensbom bom dir:<path> --scribe.clientid=****** --scribe.clientsecret=****** --name=scribe  -E -f -v
+gensbom bom dir:<path> --scribe.clientid=****** -P --scribe.clientsecret=****** --name=scribe \
+ --scribe.loginurl=https://scribesecurity-staging.us.auth0.com \ 
+ --scribe.auth.audience=api.staging.scribesecurity.com \
+ --scribe.url https://api.staging.scribesecurity.com \ 
+ -E -f -v
 ```
 
 Generate an *SBOM* for your final image.
 
 ```bash
-$HOME/.scribe/bin/gensbom bom <your_docker_repository:tag> --scribe.clientid=****** --scribe.clientsecret=****** --name=scribe  -E -f -v
+gensbom bom <your_docker_repository:tag> --scribe.clientid=****** -P --scribe.clientsecret=****** --name=scribe \
+ --scribe.loginurl=https://scribesecurity-staging.us.auth0.com \ 
+ --scribe.auth.audience=api.staging.scribesecurity.com \
+ --scribe.url https://api.staging.scribesecurity.com \ 
+ -E -f -v
 ```
 
 ## Get the integrity report 
