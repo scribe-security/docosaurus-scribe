@@ -47,6 +47,7 @@ const config = {
         logo: {
           alt: 'Scribe Security Logo',
           src: 'img/Scribe_dark.svg',
+          srcDark: 'img/Scribe_white.svg',
         },
         items: [
           {
