@@ -44,10 +44,10 @@ const config = {
     ({
       navbar: {
         // title: 'My Site',
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg',
-        // },
+        logo: {
+          alt: 'Scribe Security Logo',
+          src: 'img/Scribe_dark.svg',
+        },
         items: [
           {
             type: 'doc',
